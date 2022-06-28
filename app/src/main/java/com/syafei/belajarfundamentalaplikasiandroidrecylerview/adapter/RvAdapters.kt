@@ -1,12 +1,13 @@
 package com.syafei.belajarfundamentalaplikasiandroidrecylerview.adapter
 
+import android.content.Context
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.syafei.belajarfundamentalaplikasiandroidrecylerview.R
 import com.syafei.belajarfundamentalaplikasiandroidrecylerview.data.Hewan
 
-class RvAdapters : RecyclerView.Adapter<AnimalViewHolder>() {
+class RvAdapters(private val context: Context, private val animalList:List<Hewan>) : RecyclerView.Adapter<AnimalViewHolder>() {
 
     private val hewan: MutableList<Hewan> = mutableListOf()
 
