@@ -9,7 +9,10 @@ class AnimalViewHolder(view: View) : RecyclerView.ViewHolder(view) {
 
     fun bind(animal: Hewan) = ItemRecyclerviewBinding.bind(itemView).run {
 
-
+        ivAnimal.setImageResource(animal.images?)
+        tvNama.text = animal.names
+        tvGender.text = animal.gender
+        tvFood.text = animal.food
 
     }
 
