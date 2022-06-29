@@ -2,6 +2,7 @@ package com.syafei.belajarfundamentalaplikasiandroidrecylerview
 
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
+import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.syafei.belajarfundamentalaplikasiandroidrecylerview.adapter.RvAdapters
 import com.syafei.belajarfundamentalaplikasiandroidrecylerview.data.Hewan
@@ -11,7 +12,13 @@ class MainActivity : AppCompatActivity() {
 
     private lateinit var binding: ActivityMainBinding
     private lateinit var hewanData: ArrayList<Hewan>
-    private lateinit var animalAdapter: RvAdapters
+    private val animalAdapter = RvAdapters()
+
+    private val animalDummy = listOf(
+        Hewan(R.drawable.ic_baseline_1x_mobiledata_24, "bebek", 7, "dedeg"),
+        Hewan(R.drawable.ic_baseline_3d_rotation_24, "uguk", 4, "daging"),
+        Hewan(R.drawable.ic_baseline_accessibility_new_24, "emeng", 2, "ikan")
+    )
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -19,13 +26,19 @@ class MainActivity : AppCompatActivity() {
         setContentView(binding.root)
 
         hewanData = ArrayList<Hewan>()
-        animalAdapter = RvAdapters(this, hewanData)
-        binding.rvMain.layoutManager = LinearLayoutManager(this)
+        val linearLayoutManager = LinearLayoutManager(this)
+        binding.rvMain.layoutManager = linearLayoutManager
         binding.rvMain.adapter = animalAdapter
+        /*binding.rvMain.addItemDecoration(
+            DividerItemDecoration(
+                this,
+                LinearLayoutManager.VERTICAL
+            )
+        )*/
 
-        listAnimalAdd()
+        animalAdapter.addList(animalDummy)
 
-
+//        listAnimalAdd()
     }
 
      private fun listAnimalAdd() {

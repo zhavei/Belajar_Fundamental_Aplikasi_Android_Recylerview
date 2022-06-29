@@ -5,9 +5,9 @@ import androidx.annotation.DrawableRes
 
 data class Hewan(
     @DrawableRes
-    val images: Int,
-    val names: String,
-    val age: Int,
-    val food: String
+    val images: Int = 0,
+    val names: String = "",
+    val age: Int = 0,
+    val food: String = ""
 
 )

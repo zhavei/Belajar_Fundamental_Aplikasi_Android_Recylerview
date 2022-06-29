@@ -7,12 +7,13 @@ import androidx.recyclerview.widget.RecyclerView
 import com.syafei.belajarfundamentalaplikasiandroidrecylerview.R
 import com.syafei.belajarfundamentalaplikasiandroidrecylerview.data.Hewan
 
-class RvAdapters(private val context: Context, private val animalList:List<Hewan>) : RecyclerView.Adapter<AnimalViewHolder>() {
+class RvAdapters() : RecyclerView.Adapter<AnimalViewHolder>() {
 
     private val hewan: MutableList<Hewan> = mutableListOf()
 
     fun addList(list: List<Hewan>) {
         hewan.addAll(list)
+        notifyDataSetChanged()
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): AnimalViewHolder {
