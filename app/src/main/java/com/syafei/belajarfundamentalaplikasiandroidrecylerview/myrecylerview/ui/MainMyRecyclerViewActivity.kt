@@ -1,8 +1,10 @@
 package com.syafei.belajarfundamentalaplikasiandroidrecylerview.myrecylerview.ui
 
+import android.content.res.Configuration
 import android.os.Bundle
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
+import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.syafei.belajarfundamentalaplikasiandroidrecylerview.R
@@ -32,8 +34,13 @@ class MainMyRecyclerViewActivity : AppCompatActivity() {
     }
 
     private fun showRecyclerList() {
+        //on change orientation adapter behavior
+        if (applicationContext.resources.configuration.orientation == Configuration.ORIENTATION_LANDSCAPE) {
+            rvHeroes.layoutManager = GridLayoutManager(this, 2)
+        } else {
+            rvHeroes.layoutManager = LinearLayoutManager(this)
+        }
 
-        rvHeroes.layoutManager = LinearLayoutManager(this)
         val listHeroAdapter = ListHeroAdapter(list)
         rvHeroes.adapter = listHeroAdapter
 

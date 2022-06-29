@@ -16,7 +16,6 @@ class ListHeroAdapter(private val listHero: ArrayList<Hero>) :
         this.onItemClickCallback = onItemClickCallback
     }
 
-
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ListViewHolder {
         val view: View =
             LayoutInflater.from(parent.context).inflate(R.layout.item_myrecyclerview, parent, false)
