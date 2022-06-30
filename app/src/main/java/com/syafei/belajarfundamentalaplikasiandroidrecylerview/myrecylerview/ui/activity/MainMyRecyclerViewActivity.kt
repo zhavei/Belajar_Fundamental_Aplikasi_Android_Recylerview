@@ -1,5 +1,6 @@
-package com.syafei.belajarfundamentalaplikasiandroidrecylerview.myrecylerview.ui
+package com.syafei.belajarfundamentalaplikasiandroidrecylerview.myrecylerview.ui.activity
 
+import android.content.Intent
 import android.content.res.Configuration
 import android.os.Bundle
 import android.widget.Toast
@@ -23,14 +24,10 @@ class MainMyRecyclerViewActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         binding = ActivityMyrecyclerviewMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
-
-        rvHeroes = findViewById(R.id.rv_mymain_rv)
+        rvHeroes = binding.rvMymainRv
         rvHeroes.setHasFixedSize(true)
-
         list.addAll(listHeroes)
-
         showRecyclerList()
-
     }
 
     private fun showRecyclerList() {
@@ -47,25 +44,31 @@ class MainMyRecyclerViewActivity : AppCompatActivity() {
         listHeroAdapter.setOnItemClickCallBack(object : OnItemClickCallback {
             override fun onItemClicked(data: Hero) {
                 showSelectedHero(data)
+                sendIntent(data)
             }
         })
+    }
 
+    private fun sendIntent(dataHero: Hero) {
+        val intent = Intent(this@MainMyRecyclerViewActivity, DetailsActivity::class.java)
+        intent.putExtra("DATA", dataHero)
+        startActivity(intent)
     }
 
     private val listHeroes: ArrayList<Hero>
         get() {
             val dataName = resources.getStringArray(R.array.data_name)
             val description = resources.getStringArray(R.array.data_description)
-            val dataPhoto = resources.obtainTypedArray(R.array.data_photo)
+            val dataPhoto = resources.getStringArray(R.array.data_photo)
             val listHero = ArrayList<Hero>()
             for (i in dataName.indices) {
-                val hero = Hero(dataName[i], description[i], dataPhoto.getResourceId(i, -1))
+                val hero = Hero(dataName[i], description[i], dataPhoto[i])
                 listHero.add(hero)
             }
             return listHero
         }
 
     private fun showSelectedHero(hero: Hero) {
-        Toast.makeText(this, "kamu ngeclick ${hero.name}", Toast.LENGTH_SHORT).show()
+        Toast.makeText(this, "you selected ${hero.name}", Toast.LENGTH_SHORT).show()
     }
 }

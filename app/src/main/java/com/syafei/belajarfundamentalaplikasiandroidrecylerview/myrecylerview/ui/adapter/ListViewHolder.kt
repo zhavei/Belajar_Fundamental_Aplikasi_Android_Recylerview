@@ -1,15 +1,16 @@
 package com.syafei.belajarfundamentalaplikasiandroidrecylerview.myrecylerview.ui.adapter
 
-import android.view.View
 import android.widget.ImageView
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.syafei.belajarfundamentalaplikasiandroidrecylerview.R
+import com.syafei.belajarfundamentalaplikasiandroidrecylerview.databinding.ItemMyrecyclerviewBinding
 
-class ListViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
+class ListViewHolder(var binding: ItemMyrecyclerviewBinding) : RecyclerView.ViewHolder(binding.root) {
 
-    var imgPhoto: ImageView = itemView.findViewById(R.id.img_item_photo)
-    var tvName: TextView = itemView.findViewById(R.id.tv_item_name)
-    var tvDescription: TextView = itemView.findViewById(R.id.tv_item_description)
+    /*//no need with viewBinding
+    var imgPhoto = binding.imgItemPhoto
+    var tvName = binding.tvItemName
+    var tvDescription = binding.tvItemDescription*/
 
 }

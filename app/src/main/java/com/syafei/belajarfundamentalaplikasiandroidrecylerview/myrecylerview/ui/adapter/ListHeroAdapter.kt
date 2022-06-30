@@ -1,10 +1,10 @@
 package com.syafei.belajarfundamentalaplikasiandroidrecylerview.myrecylerview.ui.adapter
 
 import android.view.LayoutInflater
-import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
-import com.syafei.belajarfundamentalaplikasiandroidrecylerview.R
+import com.bumptech.glide.Glide
+import com.syafei.belajarfundamentalaplikasiandroidrecylerview.databinding.ItemMyrecyclerviewBinding
 import com.syafei.belajarfundamentalaplikasiandroidrecylerview.myrecylerview.data.Hero
 
 class ListHeroAdapter(private val listHero: ArrayList<Hero>) :
@@ -17,29 +17,28 @@ class ListHeroAdapter(private val listHero: ArrayList<Hero>) :
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ListViewHolder {
-        val view: View =
-            LayoutInflater.from(parent.context).inflate(R.layout.item_myrecyclerview, parent, false)
-        return ListViewHolder(view)
+//        val view: View =
+//            LayoutInflater.from(parent.context).inflate(R.layout.item_myrecyclerview, parent, false)
+//        return ListViewHolder(view)
+
+        val binding =
+            ItemMyrecyclerviewBinding.inflate(LayoutInflater.from(parent.context), parent, false)
+        return ListViewHolder(binding)
     }
 
     override fun onBindViewHolder(holder: ListViewHolder, position: Int) {
         val (name, description, photo) = listHero[position]
-        holder.imgPhoto.setImageResource(photo)
-        holder.tvName.text = name
-        holder.tvDescription.text = description
+        holder.binding.tvItemName.text = name
+        holder.binding.tvItemDescription.text = description
+        Glide.with(holder.itemView.context)
+            .load(photo)
+            .circleCrop()
+            .into(holder.binding.imgItemPhoto)
 
-        /*holder.itemView.setOnClickListener {
-            Toast.makeText(
-                holder.itemView.context,
-                "kamu klik " + listHero[holder.adapterPosition].name,
-                Toast.LENGTH_SHORT
-            ).show()
-        }*/
         holder.itemView.setOnClickListener {
             onItemClickCallback.onItemClicked(listHero[holder.adapterPosition])
         }
     }
 
     override fun getItemCount(): Int = listHero.size
-
 }
