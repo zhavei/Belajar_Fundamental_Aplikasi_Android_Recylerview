@@ -1,11 +1,10 @@
-package com.syafei.belajarfundamentalaplikasiandroidrecylerview.adapter
+package com.syafei.belajarfundamentalaplikasiandroidrecylerview.animal.adapter
 
-import android.content.Context
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.syafei.belajarfundamentalaplikasiandroidrecylerview.R
-import com.syafei.belajarfundamentalaplikasiandroidrecylerview.data.Hewan
+import com.syafei.belajarfundamentalaplikasiandroidrecylerview.animal.data.Hewan
 
 class RvAdapters() : RecyclerView.Adapter<AnimalViewHolder>() {
 

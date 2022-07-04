@@ -1,39 +1,65 @@
-package com.syafei.belajarfundamentalaplikasiandroidrecylerview.data
+package com.syafei.belajarfundamentalaplikasiandroidrecylerview.jsonparsing
 
 import android.os.Bundle
-import android.util.Log
 import androidx.appcompat.app.AppCompatActivity
-import org.json.JSONArray
+import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.RecyclerView
+import com.syafei.belajarfundamentalaplikasiandroidrecylerview.R
 import org.json.JSONException
 import org.json.JSONObject
 import java.io.IOException
 import java.nio.charset.Charset
-import java.nio.charset.StandardCharsets
 
 
-class JsonData : AppCompatActivity() {
+class JsonDataActivity : AppCompatActivity() {
 
-    var mobileNumbers: ArrayList<String> = ArrayList()
-    var personName: ArrayList<String> = ArrayList()
-    var emailId: ArrayList<String> = ArrayList()
+    var userName: ArrayList<String> = ArrayList()
+    var name: ArrayList<String> = ArrayList()
+    var avatar: ArrayList<String> = ArrayList()
+    var company: ArrayList<String> = ArrayList()
+    var location: ArrayList<String> = ArrayList()
+    var repository: ArrayList<Int> = ArrayList()
+    var followers: ArrayList<Int> = ArrayList()
+    var following: ArrayList<Int> = ArrayList()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        setContentView(R.layout.activity_json_data)
+
+        val recyclerView = findViewById<RecyclerView>(R.id.rv_jsondata)
+        val linearLayoutManager = LinearLayoutManager(applicationContext)
+        recyclerView.layoutManager = linearLayoutManager
 
         try {
             val obj = JSONObject(loadJSONFromAsset())
             val userArray = obj.getJSONArray("users")
             for (i in 0 until userArray.length()) {
                 val userDetail = userArray.getJSONObject(i)
-                personName.add(userDetail.getString("name"))
-                emailId.add(userDetail.getString("email"))
-                val contact = userDetail.getJSONObject("contact")
-                mobileNumbers.add(contact.getString("mobile"))
+                userName.add(userDetail.getString("username"))
+                name.add(userDetail.getString("name"))
+                avatar.add(userDetail.getString("avatar"))
+                company.add(userDetail.getString("company"))
+                location.add(userDetail.getString("location"))
+                repository.add(userDetail.getInt("repository"))
+                followers.add(userDetail.getInt("follower"))
+                following.add(userDetail.getInt("following"))
             }
-        }
-        catch (e: JSONException) {
+        } catch (e: JSONException) {
             e.printStackTrace()
         }
+
+        val costumAdapter = CostumAdapter(
+            this@JsonDataActivity,
+            userName,
+            name,
+            avatar,
+            company,
+            location,
+            repository,
+            followers,
+            following
+        )
+        recyclerView.adapter = costumAdapter
 
     }
 
@@ -47,8 +73,7 @@ class JsonData : AppCompatActivity() {
             inputStream.read(buffer)
             inputStream.close()
             json = String(buffer, charset)
-        }
-        catch (ex: IOException) {
+        } catch (ex: IOException) {
             ex.printStackTrace()
             return ""
         }

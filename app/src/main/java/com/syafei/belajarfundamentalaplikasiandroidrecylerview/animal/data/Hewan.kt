@@ -1,6 +1,5 @@
-package com.syafei.belajarfundamentalaplikasiandroidrecylerview.data
+package com.syafei.belajarfundamentalaplikasiandroidrecylerview.animal.data
 
-import android.widget.ImageView
 import androidx.annotation.DrawableRes
 
 data class Hewan(

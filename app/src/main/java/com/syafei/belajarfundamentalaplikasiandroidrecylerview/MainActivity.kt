@@ -2,10 +2,9 @@ package com.syafei.belajarfundamentalaplikasiandroidrecylerview
 
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
-import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.LinearLayoutManager
-import com.syafei.belajarfundamentalaplikasiandroidrecylerview.adapter.RvAdapters
-import com.syafei.belajarfundamentalaplikasiandroidrecylerview.data.Hewan
+import com.syafei.belajarfundamentalaplikasiandroidrecylerview.animal.adapter.RvAdapters
+import com.syafei.belajarfundamentalaplikasiandroidrecylerview.animal.data.Hewan
 import com.syafei.belajarfundamentalaplikasiandroidrecylerview.databinding.ActivityMainBinding
 
 class MainActivity : AppCompatActivity() {
