@@ -2,7 +2,7 @@
     "users": [{
             "username": "JakeWharton",
             "name": "Jake Wharton",
-            "avatar": "@drawable/user1",
+            "avatar": "https://i.im.ge/2022/07/05/uicNFS.png",
             "company": "Google, Inc.",
             "location": "Pittsburgh, PA, USA",
             "repository": 102,
@@ -12,7 +12,7 @@
         {
             "username": "amitshekhariitbhu",
             "name": "AMIT SHEKHAR",
-            "avatar": "@drawable/user2",
+            "avatar": "https://i.im.ge/2022/07/05/uicATF.png",
             "company": "@MindOrksOpenSource",
             "location": "New Delhi, India",
             "repository": 37,

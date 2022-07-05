@@ -28,6 +28,7 @@ class JsonDataActivity : AppCompatActivity() {
 
         val recyclerView = findViewById<RecyclerView>(R.id.rv_jsondata)
         val linearLayoutManager = LinearLayoutManager(applicationContext)
+        recyclerView.setHasFixedSize(true)
         recyclerView.layoutManager = linearLayoutManager
 
         try {

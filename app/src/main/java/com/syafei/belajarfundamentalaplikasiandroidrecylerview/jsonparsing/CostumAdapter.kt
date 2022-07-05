@@ -39,7 +39,7 @@ class CostumAdapter(
         holder.nameUser.text = name[position]
         holder.userName.text = userName[position]
         holder.company.text = company[position]
-        Glide.with(this.context)
+        Glide.with(holder.itemView.context)
             .load(avatar[position])
             .circleCrop()
             .into(holder.imageJs)
